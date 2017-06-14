@@ -1,4 +1,10 @@
 
-textarea {
-	min-height: 100%;
+.btn-primary {
+	border-color: white;
+	background-color: gray;
+}
+
+.btn-primary:hover {
+	background-color: darkgray;
+	border-color: darkgray;
 }
