@@ -20,6 +20,7 @@ $(document).ready(function(){
 
 function addLineNum() {
 	//console.log("before appending");
-	$("#line-nums").append('<li class="list-group-item">' + lineCount + '</li>');
+	$("#line-nums").append('<label style="font-size: 75%;padding-bottom: 0px;' 
+		+ 'padding-top: 10px;">' + lineCount + '</label>');
 	lineCount++;
 }

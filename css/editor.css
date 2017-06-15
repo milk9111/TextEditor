@@ -12,4 +12,16 @@
 textarea, .form-control {
 	overflow-wrap: normal;
 	overflow: visible;
+	padding-left: 0em;
+}
+
+/*label {
+	font-size: 75%;
+	padding-bottom: 0px;
+	padding-top: 10px;
+}*/
+
+#line-nums {
+	padding-left: 2.5em;
+	display: block;
 }
