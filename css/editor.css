@@ -22,6 +22,7 @@ textarea, .form-control {
 }*/
 
 #line-nums {
+	float: right;
 	padding-left: 2.5em;
 	display: block;
 }
