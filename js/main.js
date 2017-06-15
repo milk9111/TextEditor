@@ -1,5 +1,6 @@
 
 var lineCount = 1;
+var paddingOffset = 0;
 
 $(document).ready(function(){
 	
@@ -20,7 +21,8 @@ $(document).ready(function(){
 
 function addLineNum() {
 	//console.log("before appending");
-	$("#line-nums").append('<label style="font-size: 75%;padding-bottom: 0px;' 
-		+ 'padding-top: 10px;">' + lineCount + '</label>');
+	$("#line-nums").append('<label style="font-size: 75%;margin-bottom: 0px;' 
+		+ 'padding-top: ' + (10 - paddingOffset) + 'px;">' + lineCount + '</label>');
+	paddingOffset+=10;
 	lineCount++;
 }
