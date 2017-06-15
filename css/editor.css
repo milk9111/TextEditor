@@ -8,3 +8,8 @@
 	background-color: darkgray;
 	border-color: darkgray;
 }
+
+textarea, .form-control {
+	overflow-wrap: normal;
+	overflow: visible;
+}
