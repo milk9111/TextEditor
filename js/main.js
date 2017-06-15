@@ -1,6 +1,5 @@
 
 var lineCount = 1;
-var lineSpace = "      ";
 
 $(document).ready(function(){
 	
@@ -20,10 +19,7 @@ $(document).ready(function(){
 
 
 function addLineNum() {
-	console.log("before appending");
-	$("textarea").val($("textarea").val() + lineCount + lineSpace);
-	console.log(lineCount + lineSpace);
-	console.log($("textarea").val());
-	console.log("after appending");
+	//console.log("before appending");
+	$("#line-nums").append('<li class="list-group-item">' + lineCount + '</li>');
 	lineCount++;
 }
