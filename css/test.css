@@ -1,0 +1,40 @@
+html {
+    min-height: 100%;
+    min-width: 100%;
+    position: relative;
+}
+
+.btn-primary {
+	border-color: white;
+	background-color: gray;
+}
+
+.btn-primary:hover {
+	background-color: darkgray;
+	border-color: darkgray;
+}
+
+textarea, .form-control {
+	overflow-wrap: normal;
+	overflow: visible;
+	padding-left: 0em;
+}
+
+#line-nums {
+    position: absolute;
+    border-right: 1px solid gray;
+    font: -webkit-small-control;
+    height: 100%;
+    width: 5%;
+	padding-left: 2.5em;
+    padding-right: 1.25em;
+}
+
+#input {
+    position: absolute;
+    font: -webkit-small-control;
+    border-top: 1px solid black;
+    height: 100%;
+    width: 100%;
+    padding-left: 5%;
+}

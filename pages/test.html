@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+	<html lang="en">
+	<head>
+	  	<title>TextEditor</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../css/bootstrap.min.css">
+		<!-- 
+			can link from https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css
+			or ../css/bootstrap.min.css
+		-->
+		<link rel="stylesheet" href="../css/test.css">
+	  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	  	<script src="../js/bootstrap.min.js"></script>
+	  	<!--
+	  		can link from https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js
+	  		or ../js/bootstrap.min.js
+	  	-->
+		<script type="text/javascript" src="../js/main.js"></script>
+	</head>
+
+	<header>
+		<div class="container-fluid">
+			<div class="container">
+				<h1>TextEditor</h1>
+				<p>Edit text here</p>
+			</div>
+			<div class="row">
+				<div class="col-sm-2 col-md-1">
+					<!--
+						These are the buttons for the save/load.
+					-->
+					<!--<div class="btn-group">
+						<button type="button" class="btn btn-primary">Save to local</button>
+						<button type="button" class="btn btn-primary">Save to cloud</button>
+						<button type="button" class="btn btn-primary">Load from local</button>
+						<button type="button" class="btn btn-primary">Load from cloud</button>
+					</div>-->
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<body>
+		<div id="line-nums">
+		</div>
+		<div contenteditable=true id="input">
+		</div>
+	</body>
+</html> 

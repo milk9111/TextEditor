@@ -15,14 +15,38 @@ textarea, .form-control {
 	padding-left: 0em;
 }
 
-/*label {
-	font-size: 75%;
-	padding-bottom: 0px;
-	padding-top: 10px;
-}*/
-
 #line-nums {
-	float: right;
+	-moz-appearance: textfield-multiline;
+    border-right: 1px solid gray;
+    font: medium -moz-fixed;
+    font: -webkit-small-control;
+    height: 28px;
+    overflow: auto;
+    
+    height: 500px;
+    text-align: middle;
+	float: left;
 	padding-left: 2.5em;
-	display: block;
+}
+
+#contain {
+    -moz-appearance: textfield-multiline;
+    -webkit-appearance: textarea;
+    border: 1px solid gray;
+    font: medium -moz-fixed;
+    font: -webkit-small-control;
+    height: 28px;
+    overflow: auto;
+    resize: both;
+    
+    height: 500px;
+}
+
+#input {
+    font: medium -moz-fixed;
+    font: -webkit-small-control;
+    height: 28px;
+    overflow: auto;
+    
+    height: 500px;
 }
