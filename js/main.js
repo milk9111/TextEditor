@@ -57,9 +57,23 @@ function saveText() {
 }
 
 function loadText(event) {
-	var input = event.target;
-    var reader = new FileReader();
-    reader.onload = function(){
-      var dataURL = reader.result;
+	var file = event.target.files[0];    
+	var reader = new FileReader();
+    reader.onload = function(event2){
+      console.log("loading the file");
+      var content = event2.target.result;
+      document.getElementById("theTextArea").value = event2.target.result;
     };
+    reader.readAsText(file, "UTF-8");
 }
+
+document.getElementById("fileLoader").onchange = function(event) {
+	var reader = new FileReader();
+
+}
+
+
+
+
+
+
