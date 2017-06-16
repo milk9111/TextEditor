@@ -3,22 +3,12 @@ var lineCount = 1;
 var paddingOffset = 0;
 
 $(document).ready(function(){
-	
-	console.log("got here");
 	addLineNum();
-	var e = $.Event("keydown");
-	e.which = 13;
-	$("#input").val("<br>&nbsp");
-	console.log($("#input").val());
-	console.log("got here too");
     $("#input").keydown(function(e) {
-    	console.log("key was pressed");
 	   var code = e.keyCode ? e.keyCode : e.which;
-	   console.log("key was " + code);
 	   if (code == 13) {  // Enter keycode
-	   		console.log("in here");
 	 	   addLineNum();
-	   }
+	   } 
 	});
 }); 
 
