@@ -11,7 +11,7 @@ $(document).ready(function(){
 	    console.log("the preceding char is " + getCharacterPrecedingCaret(editableID).charCodeAt(0));
 	    if (code == 13) {  // Enter keycode
 	 		addLineNum();
-	    } else if (code == 8 && getCharacterPrecedingCaret(editableID) == 13) {
+	    } else if (getCharacterPrecedingCaret(editableID).charCodeAt(0) != 0 && code == 8 && getCharacterPrecedingCaret(editableID).charCodeAt(0) == 9) {
 	    	console.log("in here");
 	    	remLineNum();
 
@@ -42,13 +42,16 @@ function getCharacterPrecedingCaret(containerEl) {
 
 
 function addLineNum() {
-	$("#line-nums").append('<div id="' + lineCount + '">' + lineCount + "</div>");
+	$("#line-nums").append('<div id="L' + lineCount + '">' + lineCount + "</div>");
 	lineCount++;
 }
 
 function remLineNum() {
-	$("#line-nums").remove('<div id="' + lineCount + '">' + lineCount + "</div>");
+	$("div").remove("#L" + (lineCount - 1));
+	console.log("just tried to remove .L" + (lineCount - 1));
+	console.log($("#line-nums").html() + " is the value");
 	lineCount--;
+	console.log("new lineCount is " + lineCount);
 }
 
 function saveText() {
@@ -67,10 +70,10 @@ function loadText(event) {
     reader.readAsText(file, "UTF-8");
 }
 
-document.getElementById("fileLoader").onchange = function(event) {
+/*document.getElementById("fileLoader").onchange = function(event) {
 	var reader = new FileReader();
 
-}
+}*/
 
 
 
