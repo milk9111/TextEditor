@@ -31,3 +31,16 @@ function addLineNum() {
 	paddingOffset+=10;
 	lineCount++;
 }
+
+function saveText() {
+	console.log("in the save text");
+	var fileName = prompt("Enter a filename: ");
+}
+
+function loadText(event) {
+	var input = event.target;
+    var reader = new FileReader();
+    reader.onload = function(){
+      var dataURL = reader.result;
+    };
+}
