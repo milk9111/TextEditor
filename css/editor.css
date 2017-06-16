@@ -16,37 +16,20 @@ textarea, .form-control {
 }
 
 #line-nums {
-	-moz-appearance: textfield-multiline;
+    position: absolute;
+    font: -webkit-small-control;
     border-right: 1px solid gray;
-    font: medium -moz-fixed;
-    font: -webkit-small-control;
-    height: 28px;
-    overflow: auto;
-    
-    height: 500px;
-    text-align: middle;
-	float: left;
-	padding-left: 2.5em;
-}
-
-#contain {
-    -moz-appearance: textfield-multiline;
-    -webkit-appearance: textarea;
-    border: 1px solid gray;
-    font: medium -moz-fixed;
-    font: -webkit-small-control;
-    height: 28px;
-    overflow: auto;
-    resize: both;
-    
-    height: 500px;
+    height: auto;
+    width: 5%;
+    padding-left: 2.5em;
+    padding-right: 1.25em;
 }
 
 #input {
-    font: medium -moz-fixed;
+    position: absolute;
     font: -webkit-small-control;
-    height: 28px;
-    overflow: auto;
-    
-    height: 500px;
+    border-top: 1px solid black;
+    height: auto;
+    width: 100%;
+    padding-left: 8%;
 }

@@ -22,9 +22,9 @@ textarea, .form-control {
 
 #line-nums {
     position: absolute;
-    border-right: 1px solid gray;
     font: -webkit-small-control;
-    height: 100%;
+    border-right: 1px solid gray;
+    height: auto;
     width: 5%;
 	padding-left: 2.5em;
     padding-right: 1.25em;
@@ -34,7 +34,7 @@ textarea, .form-control {
     position: absolute;
     font: -webkit-small-control;
     border-top: 1px solid black;
-    height: 100%;
+    height: auto;
     width: 100%;
-    padding-left: 5%;
+    padding-left: 8%;
 }
