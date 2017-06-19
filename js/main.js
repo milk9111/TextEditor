@@ -4,20 +4,28 @@ var paddingOffset = 0;
 
 $(document).ready(function(){
 	addLineNum();
-    $("#input").keydown(function(e) {
-    	var editableID = document.getElementById("input");
-	    var code = e.keyCode ? e.keyCode : e.which;
-	    console.log("the code is " + code);
-	    console.log("the preceding char is " + getCharacterPrecedingCaret(editableID).charCodeAt(0));
-	    if (code == 13) {  // Enter keycode
-	 		addLineNum();
-	    } else if (getCharacterPrecedingCaret(editableID).charCodeAt(0) != 0 && code == 8 && getCharacterPrecedingCaret(editableID).charCodeAt(0) == 9) {
-	    	console.log("in here");
-	    	remLineNum();
+  $("#input").text("this is the start");
+  $("#input").keydown(function(e) {
+  	var editableID = document.getElementById("input");
+    var code = e.keyCode ? e.keyCode : e.which;
+    //console.log("the code is " + code);
+    //console.log("the preceding char is " + getCharacterPrecedingCaret(editableID).charCodeAt(0));
+    if (code == 13) {  // Enter keycode
+ 		addLineNum();
+    } else if (code == 8 && window.getSelection().focusOffset == 0) { //looks for backspace
+    	//console.log("in here");
+    	remLineNum();
 
-	    }
+    }
 	});
 }); 
+
+
+function getCaretPosition() {
+  console.log(window.getSelection());
+  var caretPos = window.getSelection().anchorOffset;
+  return caretPos;
+}
 
 
 function getCharacterPrecedingCaret(containerEl) {
@@ -48,15 +56,21 @@ function addLineNum() {
 
 function remLineNum() {
 	$("div").remove("#L" + (lineCount - 1));
-	console.log("just tried to remove .L" + (lineCount - 1));
-	console.log($("#line-nums").html() + " is the value");
 	lineCount--;
-	console.log("new lineCount is " + lineCount);
 }
 
 function saveText() {
 	console.log("in the save text");
 	var fileName = prompt("Enter a filename: ");
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+
+    }
+  };
+  xhttp.open("POST", fileName, true);
+  xhttp.send($("#input").text());
 }
 
 function loadText(event) {
