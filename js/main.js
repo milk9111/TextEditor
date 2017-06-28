@@ -4,17 +4,15 @@ var paddingOffset = 0;
 
 $(document).ready(function(){
 	addLineNum();
-      var size = window.getSelection().anchorOffset - window.getSelection().focusOffset;
 
   $("#input").text("this is the start");
   $("#input").keydown(function(e) {
   	var editableID = document.getElementById("input");
     var code = e.keyCode ? e.keyCode : e.which;
-    //console.log("the code is " + code);
-    //console.log("the preceding char is " + getCharacterPrecedingCaret(editableID).charCodeAt(0));
-    //console.log(window.getSelection());
+    var size = window.getSelection().anchorOffset - window.getSelection().focusOffset;
+
     if (code == 13) {  // Enter keycode
- 		addLineNum();
+      addLineNum();
 
     // This conditional is checking if a backspace was pressed, the cursor is at the
     // beginning of the current line, and that the line is only removed when a backspace
@@ -22,16 +20,18 @@ $(document).ready(function(){
     // was not pressed on a block of selected text in this line only. If so, then don't delete
     // it.
     } else if (code == 8 && window.getSelection().focusOffset == 0 && size == 0) { 
-    	remLineNum();
+      if (lineCount != 2) {
+        console.log("in here " + lineCount);
+        remLineNum();
+      }
     }
     
 	});
-  console.log(size);
 }); 
 
 
 function getCaretPosition() {
-  console.log(window.getSelection());
+  //console.log(window.getSelection());
   var caretPos = window.getSelection().anchorOffset;
   return caretPos;
 }
