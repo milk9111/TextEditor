@@ -4,20 +4,29 @@ var paddingOffset = 0;
 
 $(document).ready(function(){
 	addLineNum();
+      var size = window.getSelection().anchorOffset - window.getSelection().focusOffset;
+
   $("#input").text("this is the start");
   $("#input").keydown(function(e) {
   	var editableID = document.getElementById("input");
     var code = e.keyCode ? e.keyCode : e.which;
     //console.log("the code is " + code);
     //console.log("the preceding char is " + getCharacterPrecedingCaret(editableID).charCodeAt(0));
+    //console.log(window.getSelection());
     if (code == 13) {  // Enter keycode
  		addLineNum();
-    } else if (code == 8 && window.getSelection().focusOffset == 0) { //looks for backspace
-    	//console.log("in here");
-    	remLineNum();
 
+    // This conditional is checking if a backspace was pressed, the cursor is at the
+    // beginning of the current line, and that the line is only removed when a backspace
+    // is pressed on the first position in the line. The size is used to check that backspace
+    // was not pressed on a block of selected text in this line only. If so, then don't delete
+    // it.
+    } else if (code == 8 && window.getSelection().focusOffset == 0 && size == 0) { 
+    	remLineNum();
     }
+    
 	});
+  console.log(size);
 }); 
 
 
