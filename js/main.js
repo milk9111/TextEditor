@@ -68,17 +68,18 @@ function remLineNum() {
 	lineCount--;
 }
 
-function saveText() {
-	console.log("in the save text");
-	var fileName = prompt("Enter a filename: ");
+function saveText(theId, file_contents) {
+  console.log("got here");
+  console.log(theId);
+  console.log(file_contents);
+  var file_name = prompt("Enter a file name (with extension): ");
+  console.log(file_name);
 
   var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
 
-    }
-  };
-  xhttp.open("POST", fileName, true);
+  var message = xhttp.open("POST", "../php/postFile.php?id=" + theId + "&file_name=" + file_name
+   + "&file_contents=" + file_contents);
+  console.log(message);
   xhttp.send($("#input").text());
 }
 
