@@ -16,7 +16,8 @@
 	  		can link from https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js
 	  		or ../js/bootstrap.min.js
 	  	-->
-		<script type="text/javascript" src="../js/main.js"></script>
+		<script type="text/javascript" src="../js/editor.js"></script>
+		<script type="text/javascript" src="../js/fileFunctions.js"></script>
 		
 	</head>
 
@@ -34,9 +35,9 @@
 					<div class="btn-group">
 						<button type="button"  class="btn btn-primary">Save to local</button>
 						<button type="button" class="btn btn-primary" id="saveCloud" onclick="saveText($('#id').text(), $('#input').text())">Save to cloud</button>
-						<button type="button" class="btn btn-primary">Load from cloud</button>
+						<button type="button" class="btn btn-primary" onclick="loadText()">Load from cloud</button>
 					</div>
-					<input type="file" id="fileLoader" onchange="loadText(event)" name="Load from local">
+					<input type="file" id="fileLoader" onchange="loadText()" name="Load from local">
 
 				</div>
 			</div>
