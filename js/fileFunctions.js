@@ -10,9 +10,9 @@
 */
 function saveText(theId, file_contents) {
   var file_name = prompt("Enter a file name (with extension): ");
-  /*if (!hasExtension(file_name)) {
+  if (!hasExtension(file_name)) {
     file_name = file_name + ".txt";
-  }*/
+  }
   console.log(file_name);
 
   var xhttp = new XMLHttpRequest();
@@ -56,12 +56,13 @@ function loadText() { //this will need to take a parameter called 'event'.
 
   var xhttp = new XMLHttpRequest();
 
-  xhttp.onreadystatechange = function () {
+  //Once the request has been finished (that is, the PHP script is completed) this function
+  //will be called. The readyState and status are used to make sure that the request was
+  //successful (200 and 4 are good. For perspective, think of error 404 if that helps to
+  //understand it).
+  xhttp.onreadystatechange = function () { 
     if (this.readyState == 4 && this.status == 200) {
       $("#input").text(this.responseText);
-      for (var i = 0, len = this.responseText.length; i < len; i++) {
-    console.log(this.responseText[i] + ": " + this.responseText.charCodeAt(i));
-      }
     }
   }
 
