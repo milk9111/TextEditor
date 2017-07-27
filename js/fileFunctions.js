@@ -19,7 +19,10 @@ function saveText(theId, file_contents) {
 
   var result = xhttp.open("POST", "../php/postFile.php?id=" + theId + "&file_name=" + file_name
    + "&file_contents=" + file_contents);
-  console.log(result);
+
+  for (var i = 0, len = file_contents.length; i < len; i++) {
+    console.log(file_contents[i] + ": " + file_contents.charCodeAt(i));
+  }
   xhttp.send();
 }
 
@@ -56,7 +59,9 @@ function loadText() { //this will need to take a parameter called 'event'.
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       $("#input").text(this.responseText);
-      console.log($("#input").text());
+      for (var i = 0, len = this.responseText.length; i < len; i++) {
+    console.log(this.responseText[i] + ": " + this.responseText.charCodeAt(i));
+      }
     }
   }
 
