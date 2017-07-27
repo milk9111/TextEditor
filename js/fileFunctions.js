@@ -10,9 +10,9 @@
 */
 function saveText(theId, file_contents) {
   var file_name = prompt("Enter a file name (with extension): ");
-  if (!hasExtension(file_name)) {
+  /*if (!hasExtension(file_name)) {
     file_name = file_name + ".txt";
-  }
+  }*/
   console.log(file_name);
 
   var xhttp = new XMLHttpRequest();
@@ -53,8 +53,14 @@ function loadText() { //this will need to take a parameter called 'event'.
 
   var xhttp = new XMLHttpRequest();
 
-  var values = xhttp.open("GET", "..php/getFile.php?file_name=" + fileName);
-  console.log(values);
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      $("#input").text(this.responseText);
+      console.log($("#input").text());
+    }
+  }
+
+  xhttp.open("GET", "../php/getFile.php?file_name=" + fileName);
   xhttp.send();
 
 	/*var file = event.target.files[0];    
