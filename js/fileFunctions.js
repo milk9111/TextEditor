@@ -10,9 +10,9 @@
 */
 function saveText(theId, file_contents) {
   var file_name = prompt("Enter a file name (with extension): ");
-  if (!hasExtension(file_name)) {
+  /*if (!hasExtension(file_name)) {
     file_name = file_name + ".txt";
-  }
+  }*/
   console.log(file_name);
 
   var xhttp = new XMLHttpRequest();
@@ -51,7 +51,24 @@ function hasExtension(fileName) {
   author: Joe Fried, Connor Lundberg
   date: 7/23/2017
 */
-function loadText() { //this will need to take a parameter called 'event'.
+function loadText (fileName) {
+  var xhttp = new XMLHttpRequest();
+
+  //Once the request has been finished (that is, the PHP script is completed) this function
+  //will be called. The readyState and status are used to make sure that the request was
+  //successful (200 and 4 are good. For perspective, think of error 404 if that helps to
+  //understand it).
+  xhttp.onreadystatechange = function () { 
+    if (this.readyState == 4 && this.status == 200) {
+      $("#input").text(this.responseText);
+    }
+  }
+
+  xhttp.open("GET", "../php/getFile.php?file_name=" + fileName);
+  xhttp.send();
+}
+
+/*function loadText() { //this will need to take a parameter called 'event'.
   var fileName = prompt("Enter file name to open");
 
   var xhttp = new XMLHttpRequest();
@@ -76,5 +93,5 @@ function loadText() { //this will need to take a parameter called 'event'.
       var content = event2.target.result;
       document.getElementById("theTextArea").value = event2.target.result;
     };
-    reader.readAsText(file, "UTF-8");*/
-}
+    reader.readAsText(file, "UTF-8");
+}*/
