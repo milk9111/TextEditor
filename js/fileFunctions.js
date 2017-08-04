@@ -51,7 +51,7 @@ function hasExtension(fileName) {
   author: Joe Fried, Connor Lundberg
   date: 7/23/2017
 */
-function loadText (fileName) {
+function loadText (event, fileName) {
   var xhttp = new XMLHttpRequest();
 
   //Once the request has been finished (that is, the PHP script is completed) this function
