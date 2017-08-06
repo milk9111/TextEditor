@@ -19,6 +19,7 @@
 	  	-->
 		<script type="text/javascript" src="../js/editor.js"></script>
 		<script type="text/javascript" src="../js/fileFunctions.js"></script>
+		<script type="text/javascript" src="../js/loadFiles.js"></script>
 		
 	</head>
 
@@ -41,6 +42,7 @@
 						<button type="button"  class="btn btn-primary">Save to local</button>
 						<button type="button" class="btn btn-primary" id="saveCloud" onclick="saveText($('#id').text(), $('#input').text())">Save to cloud</button>
 						<button type="button" class="btn btn-primary" onclick="showFiles($('#id').text())">Load from cloud</button>
+						<button type="button" class="btn btn-primary" onclick="test()">test</button>
 					</div>
 					<input type="file" id="fileLoader" onchange="loadText()" name="Load from local">
 
@@ -69,55 +71,3 @@
 			//console.log("or here");
 		</script>
 
-<script type="text/javascript">
-	function showFiles(theId) {
-		xhttp = new XMLHttpRequest();
-		$('#myPopup').html("");
-		xhttp.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) {
-				//Because the showFiles.php echoes the json objects as one long 
-				//string with spaces separating them (and it can't be parsed like that),
-				//this will split the string on the space so we have an array of strings 
-				//now. Probably not the best way to do this, but it should work for now.
-				var res = this.response.split(" ");
-
-				//console.log(res);
-				var jsonObjects = res; //sets json array to size of res
-				for (var i = 0; i < res.length; i++) {
-					var curr = JSON.stringify(res[i]);
-					//console.log(curr);
-					res[i] = "" + res[i];
-					//console.log(JSON.stringify('{"file_name":"1"}'));
-					var json;
-					if (res[i] != " ") {
-						console.log(res[i] == null)
-						json = JSON.parse(res[i]);
-						console.log(json);
-						var str = "" + i;
-						//var json = {file_name:str};
-						jsonObjects[i] = json;
-					}
-					
-				}
-				setTimeout(function() {
-					for (var i = 0; i < jsonObjects.length; i++) {
-						console.log(jsonObjects[i].file_name);
-						var htmlStr = '<button type="button" id="' + jsonObjects[i].file_name + '">' 
-							+ jsonObjects[i].file_name + '</button>';
-						$("#myPopup").append(htmlStr);
-						document.getElementById(jsonObjects[i].file_name).addEventListener("click", 
-							loadText(jsonObjects[i].file_name), false);
-					}
-				}, 1000);
-				//var val = JSON.parse(this.response);
-				//console.log(val);
-				//$('#myPopup').html(this.responseText); //if this doesn't work use .append()
-			}
-		}
-
-		xhttp.open("GET", "../php/showFiles.php?id=" + theId);
-		xhttp.send();
-		var popup = document.getElementById('myPopup');
-		popup.classList.toggle("show");
-	}
-</script>

@@ -18,7 +18,7 @@
 		//die ("didn't connect properly <br>");
 	}
 
-	$sql = "SELECT file_contents FROM files WHERE file_name = 'helloWorld'"; //'helloWorld' will need to be changed to $file_name
+	$sql = "SELECT file_contents FROM files WHERE file_name = '" . $file_name . "'"; 
 	$result = mysqli_query($link, $sql);
 
 	if (!$result) {

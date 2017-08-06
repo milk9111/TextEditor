@@ -22,12 +22,14 @@
 		while ($row = mysqli_fetch_array($result)) {
 			/*echo '<button type="button" class="btn" onclick="loadText(' . $row['file_name'] . ')">' 
 				. $row['file_name'] . "</button><br>";*/
-
-			$response = array(
-				'file_name' => $row['file_name']
-			);
-			header('Content-type: application/json');
-			echo json_encode($response) . " ";
+			//echo ($row['file_name'] == "");
+			if ($row['file_name'] != "") {
+				$response = array(
+					'file_name' => $row['file_name']
+				);
+				header('Content-type: application/json');
+				echo json_encode($response) . " ";
+			}
 		}
 	}
 ?>
