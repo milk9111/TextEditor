@@ -59,6 +59,9 @@ function getCharacterPrecedingCaret(containerEl) {
 
 
 function addLineNum() {
+  var newText = "\n" + $("#input").text();
+  $("#input").text(newText);
+  console.log($("#input").text());
 	$("#line-nums").append('<div id="L' + lineCount + '">' + lineCount + "</div>");
 	lineCount++;
 }

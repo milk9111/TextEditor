@@ -3,6 +3,7 @@ var lineCount = 1;
 var paddingOffset = 0;
 
 $(document).ready(function(){
+  console.log("in here");
 	addLineNum();
 
   $("#input").text("this is the start");
@@ -59,6 +60,8 @@ function getCharacterPrecedingCaret(containerEl) {
 
 
 function addLineNum() {
+  $("#input").append(String.fromCharCode(160));
+  console.log($("#input").text());
 	$("#line-nums").append('<div id="L' + lineCount + '">' + lineCount + "</div>");
 	lineCount++;
 }

@@ -1,5 +1,13 @@
 
+/*
+	This will control the buttons that appear on the "Available Files" popup
+	for the user to choose. It does so by pulling all files made by the current
+	user, and displaying them as buttons with an event listener attached that will 
+	then open up the chosen file into the editor. (does not display format correctly)
 
+	author: Connor Lundberg
+	date: 8/9/2017
+*/
 function showFiles(theId) {
     xhttp = new XMLHttpRequest();
     $('#myPopup').html("");
@@ -28,6 +36,8 @@ function showFiles(theId) {
           
         }
 
+        //Here the button html is created and given an event listener that, once
+        //clicked, will activate an internal function which simply calls the loadText.
         for (var i = 0; i < length; i++) {
           var htmlStr = '<button type="button" id="' + jsonObjects[i].file_name + '">' 
             + jsonObjects[i].file_name + '</button>';
@@ -36,19 +46,7 @@ function showFiles(theId) {
             function(event) {
               loadText(this.id);
             }, false);
-
-          /*var element = document.createElement("input");
-          var load = loadText(jsonObjects[i].file_name);
-
-          element.type = "button";
-          element.value = jsonObjects[i].file_name;
-          element.id = jsonObjects[i].file_name;
-          element.onclick = load;
-          $("#myPopup").append(element);*/
         }
-        //var val = JSON.parse(this.response);
-        //console.log(val);
-        //$('#myPopup').html(this.responseText); //if this doesn't work use .append()
       }
     }
 
@@ -59,14 +57,13 @@ function showFiles(theId) {
   }
 
 
-  /*
+ /*
   This will load the selected file from the cloud and open it onto the editor.
 
   author: Joe Fried, Connor Lundberg
   date: 7/23/2017
 */
 function loadText (fileName) {
-  console.log(fileName);
   var xhttp = new XMLHttpRequest();
   //Once the request has been finished (that is, the PHP script is completed) this function
   //will be called. The readyState and status are used to make sure that the request was
@@ -74,11 +71,39 @@ function loadText (fileName) {
   //understand it).
   xhttp.onreadystatechange = function () { 
     if (this.readyState == 4 && this.status == 200) {
-      console.log("the responseText is " + this.responseText);
-      $("#input").text(this.responseText);
+    	printAllChars(this.responseText);
+    	//var outputString = reformat(this.responseText);
+    	var outputString = this.responseText;
+    	printAllChars(outputString);
+    	outputString = outputString.replace(/\n/gi, "<br/>");
+    	$("#input").html(outputString);
+    	printAllChars($("#input").html());
     }
   }
 
   xhttp.open("GET", "../php/getFile.php?file_name=" + fileName);
   xhttp.send();
+}
+
+
+function printAllChars (stringToPrint) {
+	for (var i = 0; i < stringToPrint.length; i++) {
+		console.log(stringToPrint.charAt(i) + ": " + stringToPrint.charCodeAt(i));
+	}
+}
+
+
+function reformat (stringToFormat) {
+	var formatedString = "";
+	//I'm sure there's a better way to do this, but I'm going this route
+	//just to test that it's working.
+	for (var i = 0; i < stringToFormat.length; i++) {
+		if (stringToFormat.charCodeAt(i) == 160) {
+			formatedString += "<br>";
+		} else {
+			formatedString += stringToFormat.charAt(i);
+		}
+	}
+
+	return formatedString;
 }

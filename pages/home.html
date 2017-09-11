@@ -11,7 +11,11 @@
 		-->
 		<link rel="stylesheet" href="../css/test.css">
 		<link rel="stylesheet" href="../css/popup.css">
-	  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	  	<script src="../js/jquery-3.2.1.min.js"></script>
+	  	<!--
+	  		can link from https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js
+	  		or ../js/jquery-3.2.1.min.js
+	  	-->
 	  	<script src="../js/bootstrap.min.js"></script>
 	  	<!--
 	  		can link from https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js
@@ -54,10 +58,14 @@
 	</header>
 
 	<body>
-		<div id="line-nums">
+		<div class="canvas-text-editor" tabindex="0">
+			<canvas></canvas>
+			<textarea></textarea>
+		</div>
+		<!--<div id="line-nums">
 		</div>
 		<div contenteditable="true" id="input">
-		</div>
+		</div>-->
 	</body>
 </html> 
 

@@ -13,17 +13,28 @@ function saveText(theId, file_contents) {
   /*if (!hasExtension(file_name)) {
     file_name = file_name + ".txt";
   }*/
-  console.log(file_name);
+  //console.log(file_name);
 
   var xhttp = new XMLHttpRequest();
+
+  console.log(theId);
+  console.log(file_name);
+  console.log(file_contents);
+  
+  printAllChars(file_contents);
 
   var result = xhttp.open("POST", "../php/postFile.php?id=" + theId + "&file_name=" + file_name
    + "&file_contents=" + file_contents);
 
-  for (var i = 0, len = file_contents.length; i < len; i++) {
-    console.log(file_contents[i] + ": " + file_contents.charCodeAt(i));
-  }
+  
   xhttp.send();
+}
+
+
+function printAllChars (stringToPrint) {
+  for (var i = 0, len = stringToPrint.length; i < len; i++) {
+    console.log(stringToPrint[i] + ": " + stringToPrint.charCodeAt(i));
+  }
 }
 
 

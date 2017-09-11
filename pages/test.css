@@ -1,0 +1,11 @@
+.fore-palette,
+.back-palette {
+	display:none;
+}
+
+.fore-wrapper:hover .fore-palette,
+.back-wrapper:hover .back-palette {
+	display: block;
+	float: left;
+	position: absolute;
+}
