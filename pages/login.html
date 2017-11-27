@@ -1,14 +1,60 @@
 <!DOCTYPE html>
 <html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		function showUser() {
+			if (window.XMLHttpRequest) {
+				xmlhttp = new XMLHttpRequest();
+			} else {
+				xmlhttp = new ActiveXObject ("Microsoft.XMLHTTP");
+			}
+			xmlhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					document.getElementById("showInfo").innerHTML = this.responseText;
+				}
+			};
+			xmlhttp.open("GET", "../php/table.php", true);
+			xmlhttp.send();
+		}
+
+		function submitUser() {
+			var id, firstName, lastName, xmlhttp;
+			id = $('[name="txtID"]').val();
+			console.log(id);
+			firstName = $('[name="txtFirst"]').val();
+			lastName = $('[name="txtLast"]').val();
+
+			if ((firstName != "" && lastName != "") && (firstName != null && lastName != null)) {
+				if (window.XMLHttpRequest) {
+					xmlhttp = new XMLHttpRequest();
+				} else {
+					xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+
+				console.log("made it here");
+				xmlhttp.open("GET", "../php/submit.php?id=" + id + "&first=" + firstName 
+					+ "&last=" + lastName);
+				xmlhttp.send();
+			}
+		}
+	</script>
+</head>
 <body>
 
-	<form name="frmLogin" method="get" action="details.php">
-	Username: <input type="text" name="txtUsername" />
+	<form name="frmLogin" method="post">
+	Employee ID: <input type="text" name="txtID" />
 	<br /> <br/>
-	Password: <input type="password" name="txtPassword" />
+	First Name: <input type="text" name="txtFirst" />
 	<br/> <br/>
-	<input type="submit" name="btnSubmit" value="Submit" />
+	Last Name: <input type="text" name="txtLast" />
+	<br/> <br/>
+	<input type="button" name="btnSubmit" onclick="submitUser()" value="Submit" />
+	<input type="button" name="getInfo" onclick="showUser()" value="Display All Entries" />
 	</form>
+
+	<br/>
+	<div id="showInfo"></div>
 	
 </body>
 </html>
